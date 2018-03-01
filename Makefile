@@ -35,11 +35,11 @@ all: librf24-bcm
 
 # Make the library
 librf24-bcm: RF24.o bcm2835.o 
-	$(CXX)-shared -Wl,-soname,$@.so.1 ${CCFLAGS} -o ${LIBNAME} $^
+	$(CXX) -shared -Wl,-soname,$@.so.1 ${CCFLAGS} -o ${LIBNAME} $^
 	
 # Library parts
 RF24.o: RF24.cpp
-	$(CXX)-Wall -fPIC ${CCFLAGS} -c $^
+	$(CXX) -Wall -fPIC ${CCFLAGS} -c $^
 
 bcm2835.o: ${DRIVER_DIR}/bcm2835.c
 	$(CC) -Wall -fPIC ${CCFLAGS} -c $^
